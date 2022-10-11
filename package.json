@@ -1,0 +1,24 @@
+{
+  "name": "archerie-api",
+  "version": "1.0.0",
+  "description": "REST API to access the data of an archery companion website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Srikahn/archerie-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Srikahn/archerie-api/issues"
+  },
+  "homepage": "https://github.com/Srikahn/archerie-api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
