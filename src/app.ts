@@ -1,13 +1,13 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+import express, { Express, Request, Response } from 'express';
+const app: Express = express();
+const port: number = 3000;
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello le monde !');
 });
 
-app.get('/user', (req, res) => {
-    var test = testDB();
+app.get('/user', (req: Request, res: Response) => {
+    testDB();
     res.send('Requête d\'utilisateur');
 })
 
@@ -21,14 +21,14 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'archerie'
+  database: 'archery'
 });
 
-function testDB() {
+function testDB(): void {
     connection.connect();
 
-    connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) => {
-        if (err) 
+    connection.query('SELECT 1 + 1 AS solution', (err: any, rows: any[], fields: any) => {
+        if (err)
             throw err;
 
         console.log('The solution is: ', rows[0].solution);
@@ -36,4 +36,3 @@ function testDB() {
 
     connection.end();
 }
-
