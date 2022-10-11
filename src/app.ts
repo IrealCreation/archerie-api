@@ -2,6 +2,11 @@ import express, { Express, Request, Response } from 'express';
 const app: Express = express();
 const port: number = 3000;
 
+// Importing routes
+import seanceRoute from "./routes/seanceRoutes";
+
+app.use("/seance", seanceRoute);
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello le monde !');
 });
