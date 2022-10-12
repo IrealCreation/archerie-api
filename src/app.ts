@@ -8,16 +8,11 @@ import seanceRoute from "./routes/seanceRoutes";
 app.use("/seance", seanceRoute);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello le monde !');
+  res.status(200).send('Bienvenue dans l\'API du site d\'archerie.');
 });
 
-app.get('/user', (req: Request, res: Response) => {
-    testDB();
-    res.send('Requête d\'utilisateur');
-})
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
 
 // MySQL

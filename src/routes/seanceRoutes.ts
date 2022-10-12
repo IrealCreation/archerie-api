@@ -1,7 +1,9 @@
 import express from "express";
 const router = express.Router();
+import { getAllSeances, getSeance } from '../controllers/seanceController';
 
-// TODO: importer les fonctions depuis le controller
+router.get("/", getAllSeances);
+
 router.get("/:id", getSeance);
 
 export default router;

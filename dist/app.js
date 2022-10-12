@@ -6,15 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = 3000;
+// Importing routes
+const seanceRoutes_1 = __importDefault(require("./routes/seanceRoutes"));
+app.use("/seance", seanceRoutes_1.default);
 app.get('/', (req, res) => {
-    res.send('Hello le monde !');
-});
-app.get('/user', (req, res) => {
-    testDB();
-    res.send('Requête d\'utilisateur');
+    res.status(200).send('Bienvenue dans l\'API du site d\'archerie.');
 });
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });
 // MySQL
 const mysql = require('mysql');
@@ -22,7 +21,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'archerie'
+    database: 'archery'
 });
 function testDB() {
     connection.connect();
