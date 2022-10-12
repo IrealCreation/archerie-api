@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const seanceController_1 = require("../controllers/seanceController");
-// TODO: importer les fonctions depuis le controller
+router.get("/", seanceController_1.getAllSeances);
 router.get("/:id", seanceController_1.getSeance);
 exports.default = router;

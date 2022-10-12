@@ -1,15 +1,17 @@
-import Sequelize from "sequelize";
+import { Sequelize, Model, DataTypes } from 'sequelize';
 import dbConnection from "../dbConnection";
 
-export const seanceModel = dbConnection.define("seance", {
+const seanceModel = dbConnection.define("seance", {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNul: false,
         primaryKey: true
     },
     date: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
         allowNul: false
     },
 });
+
+export default seanceModel;
