@@ -1,8 +1,8 @@
 type Seance = {
     id: number,
     date: Date,
-    focus: string,
-    commentaire: string,
+    // focus: string,
+    // commentaire: string,
     //volees: IVolee[]
 }
 

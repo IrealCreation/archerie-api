@@ -5,12 +5,12 @@ const seanceModel = dbConnection.define("seance", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        allowNul: false,
+        allowNull: false,
         primaryKey: true
     },
     date: {
         type: DataTypes.DATE,
-        allowNul: false
+        allowNull: false
     },
 });
 
