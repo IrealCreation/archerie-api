@@ -7,6 +7,9 @@ const dbConnection = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
   dialect: "mysql",
   host: DB_HOST,
   port: DB_PORT,
+  define: {
+    timestamps: false
+  }
 });
 
 export default dbConnection;
