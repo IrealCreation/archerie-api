@@ -1,9 +1,11 @@
 import express, { Express, Request, Response } from 'express';
 import { Seance } from "../models/seanceModel";
-// import Seance from "../types/seanceType";
+import { Volee } from "../models/voleeModel";
 
 export const getAllSeances = (req: Request, res: Response) => {
-    Seance.findAll()
+    Seance.findAll({
+        include: Volee // Eager loading
+    })
     // TODO: remove the any
     .then((seances: Seance[]) => {
         res.status(200).json(seances);

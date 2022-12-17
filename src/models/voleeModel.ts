@@ -1,6 +1,6 @@
-import { Table, Model, Column, HasMany } from 'sequelize-typescript';
+import { Table, Model, Column, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { sequelizeTS } from "../dbConnection";
-import { Volee } from "./voleeModel";
+import { Seance } from "./seanceModel";
 
 // Old system without TypeScript
 // import { Sequelize, Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
@@ -20,14 +20,20 @@ import { Volee } from "./voleeModel";
 // );
 
 @Table
-export class Seance extends Model {
-    // Column "id" added automatically
+export class Volee extends Model {
 
     @Column
-    date!: Date; // The ! postfix operator avoids a "property has no initializer" error
+    numero!: number;
 
-    @HasMany(() => Volee)
-    volees!: Volee[];
+    @Column
+    distance!: number;
+
+    @Column
+    blason!: number;
+
+    @ForeignKey(() => Seance)
+    @Column
+    seanceId!: number;
 }
 
-sequelizeTS.addModels([Seance]);
+sequelizeTS.addModels([Volee]);
