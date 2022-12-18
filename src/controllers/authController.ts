@@ -1,9 +1,6 @@
 import jwt from "jsonwebtoken";
 import Express from "express";
 import bcrypt from "bcryptjs";
-import { IsEmail } from "sequelize-typescript";
-import { Error } from 'sequelize/types';
-import { Op } from "sequelize";
 import { Compte } from "../models/compteModel";
 
 //fonction permettant de créer un access token
