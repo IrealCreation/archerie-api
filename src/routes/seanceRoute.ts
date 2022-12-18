@@ -1,6 +1,7 @@
 import express from "express";
-const router = express.Router();
 import { getAllSeances, getSeance } from '../controllers/seanceController';
+
+const router = express.Router();
 
 router.get("/", getAllSeances);
 

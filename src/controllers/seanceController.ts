@@ -6,7 +6,6 @@ export const getAllSeances = (req: Request, res: Response) => {
     Seance.findAll({
         include: Volee // Eager loading
     })
-    // TODO: remove the any
     .then((seances: Seance[]) => {
         res.status(200).json(seances);
     })
