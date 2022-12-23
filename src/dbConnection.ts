@@ -19,7 +19,7 @@ const sequelizeTS = new SequelizeTS({
   dialect: 'mysql',
   username: DB_USER,
   password: DB_PASSWORD,
-  models: ['Seance'],
+  models: ['Compte', 'Seance', 'Volee'],
   define: {
     timestamps: false,
     freezeTableName: true,

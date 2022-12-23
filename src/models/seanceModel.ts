@@ -1,6 +1,7 @@
-import { Table, Model, Column, HasMany } from 'sequelize-typescript';
+import { Table, Model, Column, HasMany, ForeignKey } from 'sequelize-typescript';
 import { sequelizeTS } from "../dbConnection";
 import { Volee } from "./voleeModel";
+import { Compte } from "./compteModel";
 
 // Old system without TypeScript
 // import { Sequelize, Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
@@ -28,6 +29,10 @@ export class Seance extends Model {
 
     @HasMany(() => Volee)
     volees!: Volee[];
+
+    @ForeignKey(() => Compte)
+    @Column
+    compteId!: number;
 }
 
 sequelizeTS.addModels([Seance]);

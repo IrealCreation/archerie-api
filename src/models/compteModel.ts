@@ -17,8 +17,8 @@ export class Compte extends Model {
     @Column
     dateInscription!: Date;
 
-    @HasMany(() => Seance)
-    seances!: Seance[];
+    // @HasMany(() => Seance)
+    // seances!: Seance[];
 }
 
 sequelizeTS.addModels([Compte]);

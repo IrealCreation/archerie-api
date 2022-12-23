@@ -15,5 +15,13 @@ export const getAllSeances = (req: Request, res: Response) => {
 };
 
 export const getSeance = (req: Request, res: Response) => {
-    res.status(200).send("Getting seance " + req.params.id);
+    Seance.findByPk(req.params.id, {
+        include: Volee 
+    })
+    .then((seance: Seance | null) => {
+        res.status(200).json(seance);
+    })
+    .catch((err: Error) => {
+        res.status(409).send(err);
+    });
 };

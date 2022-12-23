@@ -16,7 +16,7 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).send('Bienvenue dans l\'API du site d\'archerie.');
 });
 
-app.use(isAuth); // toute route sous cette ligne sera verifié avec isAuth
+// app.use(isAuth); // toute route sous cette ligne sera verifié avec isAuth
 app.use("/user", seanceRoute);
 
 app.listen(port, () => {
