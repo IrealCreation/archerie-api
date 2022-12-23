@@ -27,12 +27,8 @@ export class Seance extends Model {
     @Column
     date!: Date; // The ! postfix operator avoids a "property has no initializer" error
 
-    @HasMany(() => Volee)
+    @HasMany(() => Volee, "seanceId")
     volees!: Volee[];
-
-    @ForeignKey(() => Compte)
-    @Column
-    compteId!: number;
 }
 
 sequelizeTS.addModels([Seance]);

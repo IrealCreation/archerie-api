@@ -13,10 +13,6 @@ export class Volee extends Model {
 
     @Column
     blason!: number;
-
-    @ForeignKey(() => Seance)
-    @Column
-    seanceId!: number;
 }
 
 sequelizeTS.addModels([Volee]);
