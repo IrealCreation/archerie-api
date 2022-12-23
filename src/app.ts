@@ -7,6 +7,7 @@ const port: number = 3000;
 // Importing routes
 import seanceRoute from "./routes/seanceRoute";
 import authRoute from "./routes/authRoute";
+import compteRoute from "./routes/compteRoute";
 
 app.use("/seance", seanceRoute);
 app.use("/auth", authRoute);
@@ -17,7 +18,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // app.use(isAuth); // toute route sous cette ligne sera verifié avec isAuth
-app.use("/user", seanceRoute);
+app.use("/compte", compteRoute);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
