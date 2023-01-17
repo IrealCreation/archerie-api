@@ -1,25 +1,32 @@
 import jwt from "jsonwebtoken";
 import Express, { NextFunction } from "express";
 
-//fonction permettant de vérifier si un utilisateur à un token
+// Vérification du token de l'utilisateur
 const isAuth = (req: Express.Request, res: Express.Response, next: NextFunction) => {
-    //on récupère le token via la requete
+    // On récupère le token transmis dans la requête "as a Bearer credential in an HTTP Authorization header"
     const token = req.header("Authorization")?.replace("Bearer ", "");
 
-    //si l'utilisateur n'a pas de token
+    // Si l'utilisateur n'a pas de token, accès refusé
     if (!token) {
         return res.status(401).send("Accès refusé");
     }
     
-    // si il a un token, on fait un try & catch
+    // Il y a un token : vérifions-le
     if (typeof process.env.ACCESS_TOKEN_SECRET === "string") {
+        
+        // Utilisons la méthode verify de JSON Web Token pour vérifier s'il est valide ou non
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
             if (err) {
-                return res.status(403).send("Token invalide")
+                return res.status(403).send("Token invalide");
             }
             req.token = decoded;
+
+            // Tout est ok, on passe à la prochaine fonction dans la route
             next();
         });
+    }
+    else {
+        return res.status(403).send("Format de token incorrect");
     }
 }
 
