@@ -1,13 +1,11 @@
 import { Sequelize } from 'sequelize';
 import { Sequelize as SequelizeTS } from 'sequelize-typescript';
 
-import { DB_HOST, DB_DATABASE, DB_PASSWORD, DB_PORT, DB_USER } from "./config";
-
 // Connexion à la base de données
-const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
   dialect: "mysql",
-  host: DB_HOST,
-  port: DB_PORT,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   define: {
     timestamps: false,
     freezeTableName: true
@@ -15,10 +13,10 @@ const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
 });
 
 const sequelizeTS = new SequelizeTS({
-  database: DB_DATABASE,
+  database: process.env.DB_DATABASE,
   dialect: 'mysql',
-  username: DB_USER,
-  password: DB_PASSWORD,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   models: ['Compte', 'Seance', 'Volee'],
   define: {
     timestamps: false,
