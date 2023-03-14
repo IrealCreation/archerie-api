@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import Express, { NextFunction } from "express";
 
+const token_secret = process.env.ACCESS_TOKEN_SECRET as string;
+
 // Vérification du token de l'utilisateur
 const isAuth = (req: Express.Request, res: Express.Response, next: NextFunction) => {
     // On récupère le token transmis dans la requête "as a Bearer credential in an HTTP Authorization header"
@@ -11,23 +13,16 @@ const isAuth = (req: Express.Request, res: Express.Response, next: NextFunction)
         return res.status(401).send("Accès refusé");
     }
     
-    // Il y a un token : vérifions-le
-    if (typeof process.env.ACCESS_TOKEN_SECRET === "string") {
-        
-        // Utilisons la méthode verify de JSON Web Token pour vérifier s'il est valide ou non
-        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
-            if (err) {
-                return res.status(403).send("Token invalide");
-            }
-            req.token = decoded;
+    // Utilisons la méthode verify de JSON Web Token pour vérifier si le token est valide ou non
+    jwt.verify(token, token_secret, (err, decoded) => {
+        if (err) {
+            return res.status(403).send("Token invalide");
+        }
+        req.token = decoded;
 
-            // Tout est ok, on passe à la prochaine fonction dans la route
-            next();
-        });
-    }
-    else {
-        return res.status(403).send("Format de token incorrect");
-    }
+        // Tout est ok, on passe à la prochaine fonction dans la route
+        next();
+    });
 }
 
 export default isAuth;

@@ -1,11 +1,17 @@
 import { Sequelize } from 'sequelize';
 import { Sequelize as SequelizeTS } from 'sequelize-typescript';
 
+const database = process.env.DB_DATABASE as string;
+const user = process.env.DB_USER as string;
+const password = process.env.DB_PASSWORD as string;
+const host = process.env.DB_HOST as string;
+const port = parseInt(process.env.DB_PORT as string);
+
 // Connexion à la base de données
-const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+const sequelize = new Sequelize(database, user, password, {
   dialect: "mysql",
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
+  host: host,
+  port: port,
   define: {
     timestamps: false,
     freezeTableName: true

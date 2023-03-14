@@ -27,8 +27,16 @@ export class Seance extends Model {
     @Column
     date!: Date; // The ! postfix operator avoids a "property has no initializer" error
 
+    @Column
+    focus!: string;
+
+    @Column
+    commentaire!: string;
+
     @HasMany(() => Volee, "seanceId")
     volees!: Volee[];
+
+    // compte_id AS compteId
 }
 
 sequelizeTS.addModels([Seance]);

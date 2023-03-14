@@ -13,6 +13,8 @@ export class Volee extends Model {
 
     @Column
     blason!: number;
+
+    // seance_id as seanceId 
 }
 
 sequelizeTS.addModels([Volee]);

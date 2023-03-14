@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express, { Express, Request, Response } from 'express';
 import isAuth from "./middleware/authMiddleware";
 
@@ -8,6 +9,9 @@ const port: number = 3000;
 import seanceRoute from "./routes/seanceRoute";
 import authRoute from "./routes/authRoute";
 import compteRoute from "./routes/compteRoute";
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/seance", seanceRoute);
 app.use("/auth", authRoute);
